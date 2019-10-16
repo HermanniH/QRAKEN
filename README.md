@@ -21,10 +21,10 @@ We recommend installing Anaconda, which provides you with most of the packages. 
 To generate random numbers with QRAKEN, you first need to open Bell inequality_v2.ipynb. 
 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
- *	Local: True/False, decides if you run the code locally on the qasm simulator, or if the code is submitted to the actual hardware.
- *	Mode: For mode, there are two options. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality. Generating that state requires more gates. This is Mode = 0. With Mode =1 you generate a Bell state, which theoretically increases your CHSH violation (leading to a higher key rate), but this increases the required number of gates in the circuit. Mode 0 is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
- *	Multcircuit: The code will generate 4 circuits, corresponding to the 4 different measurement scenarios. Multcircuit determines how many copies we submit each circuit within one batch submission to IBM. 
- *	Shots: How many evaluations of each circuit are done. Maximal number recommended. 
+   a)	Local: True/False, decides if you run the code locally on the qasm simulator, or if the code is submitted to the actual hardware.
+   b) Mode: For mode, there are two options. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality. Generating that state requires more gates. This is Mode = 0. With Mode =1 you generate a Bell state, which theoretically increases your CHSH violation (leading to a higher key rate), but this increases the required number of gates in the circuit. Mode 0 is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
+   c)Multcircuit: The code will generate 4 circuits, corresponding to the 4 different measurement scenarios. Multcircuit determines how many copies we submit each circuit within one batch submission to IBM. 
+   d)	Shots: How many evaluations of each circuit are done. Maximal number recommended. 
 
 After this, evaluate all the cells in the notebook.
 
