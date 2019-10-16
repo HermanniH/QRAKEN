@@ -6,17 +6,12 @@ Bell’s theorem gives us bounds on the maximal amount of correlations between t
 
 ## Pre-requisites:
 
--Numpy
-
--Scipy
-
--Trevisan extractor (follow installation steps [here](https://github.com/jdbancal/libtrevisan) )
-
--Binascii
-
--Pickle
-
--Qiskit
+- Numpy
+- Scipy
+- Trevisan extractor (follow installation steps [here](https://github.com/jdbancal/libtrevisan) )
+- Binascii
+- Pickle
+- Qiskit
 
 We recommend installing Anaconda, which provides you with most of the packages. Additionally you only need Qiskit and the extractor algorithm.
 
@@ -26,18 +21,18 @@ We recommend installing Anaconda, which provides you with most of the packages. 
 To generate random numbers with QRAKEN, you first need to open Bell inequality_v2.ipynb. 
 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
- a)	Local: True/False, decides if you run the code locally on the qasm simulator, or if the code is submitted to the actual hardware.
- b)	Mode: For mode, there are two options. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality. Generating that state requires more gates. This is Mode = 0. With Mode =1 you generate a Bell state, which theoretically increases your CHSH violation (leading to a higher key rate), but this increases the required number of gates in the circuit. Mode 0 is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
- c)	Multcircuit: The code will generate 4 circuits, corresponding to the 4 different measurement scenarios. Multcircuit determines how many copies we submit each circuit within one batch submission to IBM. 
- d)	Shots: How many evaluations of each circuit are done. Maximal number recommended. 
+ *	Local: True/False, decides if you run the code locally on the qasm simulator, or if the code is submitted to the actual hardware.
+ *	Mode: For mode, there are two options. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality. Generating that state requires more gates. This is Mode = 0. With Mode =1 you generate a Bell state, which theoretically increases your CHSH violation (leading to a higher key rate), but this increases the required number of gates in the circuit. Mode 0 is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
+ *	Multcircuit: The code will generate 4 circuits, corresponding to the 4 different measurement scenarios. Multcircuit determines how many copies we submit each circuit within one batch submission to IBM. 
+ *	Shots: How many evaluations of each circuit are done. Maximal number recommended. 
 
 After this, evaluate all the cells in the notebook.
 
 When your programme has executed, you will find the output as a file called something like “outputCHSH_machine_Concat_dataset.txt”. This is the file you will use as input for the extractor. Before we do that, we also need to calculate the amount of entropy available in the string. This is done using the script Parameters_extractors.py. 
 Here you set your parameters as you like, the explanations for each of them can be found in the supplemental material of [1]. The main parameters in our interest are the following:
-a)	n: This is the number of bits you have generate in the previous step. It can be found after the evaluation of the second cell in the notebook. The larger the n, the larger is m, the number of random bits we can extract from the string. (also m/n is larger).
-b)	w_exp: this is the winning probability of the CHSH game. It is calculated according to w_exp = 0.5+S/8 for the CHSH parameter S, which is found at the end of the previous notebook. The S correlator value will depend on the actual hardware you use and even the specific pairs of qubits. The larger your S (-> w_exp), the better. 
-c)	delta_est: is the significance level at which you want your bit string to random. The smaller you make this, the fewer bits you will be able to extract. 
+1)	n: This is the number of bits you have generate in the previous step. It can be found after the evaluation of the second cell in the notebook. The larger the n, the larger is m, the number of random bits we can extract from the string. (also m/n is larger).
+2)	w_exp: this is the winning probability of the CHSH game. It is calculated according to w_exp = 0.5+S/8 for the CHSH parameter S, which is found at the end of the previous notebook. The S correlator value will depend on the actual hardware you use and even the specific pairs of qubits. The larger your S (-> w_exp), the better. 
+3)	delta_est: is the significance level at which you want your bit string to random. The smaller you make this, the fewer bits you will be able to extract. 
 
 Once you have evaluated the code, you will be presented by the numbers 2*n, m, and rate. These will be used as input to the Trevisan extractor. Now make sure your output-file from the notebook and the seed random number ‘rnd_short_subset1.txt’ are in the libtrevisan folder and run the following command in your terminal:
 
