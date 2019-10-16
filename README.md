@@ -4,7 +4,7 @@ Quantum RAndom Keys via ENtanglement. QRAKEN is a certified quantum random numbe
 Bell’s theorem gives us bounds on the maximal amount of correlations between two distant parties if the outcomes of their experiments could in some way be predicted deterministically. However, if their experiments are entangled with each other, quantum mechanics allows them to violate this maximal bound. The conclusion must be that the measurement outcomes can not be predicted deterministically, i.e. they must be random. As a consequence, we can use the violation of a Bell-inequality as a certification scheme for randomness. A maximal violation of the CHSH-inequality (a type of Bell-inequality) guarantees that every single outcome is impossible to predict. A smaller violation leaves room to predict some fraction of the outcomes. This fraction is best described by the entropy H_min. We calculate this entropy based on [1], which does not assume i.i.d. conditions or fair sampling. With the entropy of the generated bit string, it is possible to calculate the number of purely random bits present in the string. These numbers can then be extracted with the aid of a randomness extractor, such as Trevisan’s extractor [2]. We use the implementation by the authors of [1], available at https://github.com/jdbancal/libtrevisan. 
 
 
-# Pre-requisites:
+## Pre-requisites:
 
 Numpy
 Scipy
@@ -16,7 +16,7 @@ Qiskit
 We recommend installing Anaconda, which provides you with most of the packages. Additionally you only need Qiskit and the extractor algorithm.
 
 
-# Manual
+## Manual
 
 To generate random numbers with QRAKEN, you first need to open Bell inequality_v2.ipynb. 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
@@ -35,7 +35,7 @@ c)	delta_est: is the significance level at which you want your bit string to ran
 
 Once you have evaluated the code, you will be presented by the numbers 2*n, m, and rate. These will be used as input to the Trevisan extractor. Now make sure your output-file from the notebook and the seed random number ‘rnd_short_subset1.txt’ are in the libtrevisan folder and run the following command in your terminal:
 
-./extractor -v --Blk_Design --bitext rsh --eps 1e-5 --alpha ‘rate’  --weakdes gfp --outputsize ‘m’ --inputsize ‘2*n’ --seed rnd_short_subset1.txt --input ‘input.txt’ --output_file ‘output.txt’
+`./extractor -v --Blk_Design --bitext rsh --eps 1e-5 --alpha ‘rate’  --weakdes gfp --outputsize ‘m’ --inputsize ‘2*n’ --seed rnd_short_subset1.txt --input ‘input.txt’ --output_file ‘output.txt’`
 
 You will most likely encounter an error, which says your m is too large and the most number of extractable bits is something marginally less. Adjust m down to that, as the algorithm is not able to extract quite as many bits as you’d wish for. 
 
@@ -44,7 +44,7 @@ Once you have run the extractor, you have an output file called ‘output.txt’
 Time to celebrate!
 
 
-# References
+## References
 
 [1] Shen, Lijiong, et al. "Randomness extraction from bell violation with continuous parametric down-conversion." Physical review letters 121.15 (2018): 150402.
 
