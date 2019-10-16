@@ -7,10 +7,15 @@ Bell’s theorem gives us bounds on the maximal amount of correlations between t
 ## Pre-requisites:
 
 -Numpy
+
 -Scipy
+
 -Trevisan extractor (follow installation steps [here](https://github.com/jdbancal/libtrevisan) )
+
 -Binascii
+
 -Pickle
+
 -Qiskit
 
 We recommend installing Anaconda, which provides you with most of the packages. Additionally you only need Qiskit and the extractor algorithm.
