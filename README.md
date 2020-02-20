@@ -21,18 +21,18 @@ We recommend installing Anaconda, which provides you with most of the packages. 
 To generate random numbers with QRAKEN, you first need to open QRAKEN_RunQiskit.ipynb. 
 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
-   1)	Local: True/False, decides if you run the code locally on the qasm simulator, or if the code is submitted to the actual hardware.
-   2) coupling_map_pair: If set to []: Script automatically finds best qubit pairs to run measurements. Else, manually define physical qubit pairs as e.g. coupling_map_pair=[[0,1]] or [[0,1],[3,4]]. 
+   1)	Local: False: Run on ibm quantum machine, True: run on local simulator.
+   2) coupling_map_pair: If set to []: Script automatically finds best qubit pairs to run measurements on. Else, manually define physical qubit pairs as e.g. coupling_map_pair=[[0,1]] or [[0,1],[3,4]]. 
    3) machine: Specifiy which quantum computer is used to run 
    4) mode: For mode, there are two options, default is 0. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality.  Mode 0 is explained [here](https://github.com/Qiskit/qiskit-community-tutorials/blob/master/terra/qis_adv/entangled_measurement.ipynb). With mode 1, an alternative gate set creates a Bell state of lower fidelity with less violation and is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
-   5) Shots: How many evaluations of each circuit are done. Maximal number recommended. 
 
-After this, evaluate all the cells in the notebook.
+After this, evaluate all the cells in the notebook. 
 
-When your programme has executed, you will find the output as a file called something like “outputCHSH_machine_MeasurementResult_xx_Sx_yz.txt”. This is the file you will use as input for the extractor. Before we do that, we also need to calculate the amount of entropy available in the string. This is done using the script Parameters_extractors.py. 
+When your programme has executed, you will find the output as a file called something like "Measurements_Pair_x_Sy_yy.txt". In Pair_x, x indicates from which qubit pair the random numbers were generated. The number after S indicate the measured Bell inequality.
+This is the file you will use as input for the extractor. Before we do that, we also need to calculate the amount of entropy available in the string. This is done using the script Parameters_extractors.py. 
 Here you set your parameters as you like, the explanations for each of them can be found in the supplemental material of [1]. The main parameters in our interest are the following:
 1)	n: This is the number of bits you have generate in the previous step. It can be found after the evaluation of the second cell in the notebook. The larger the n, the larger is m, the number of random bits we can extract from the string. (also m/n is larger).
-2)	w_exp: this is the winning probability of the CHSH game. It is calculated according to w_exp = 0.5+S/8 for the CHSH parameter S, which is found at the end of the previous notebook or in the part after the S of the input file “outputCHSH_machine_MeasurementResult_xx_Sx_yz.txt”. The S correlator value will depend on the actual hardware you use and even the specific pairs of qubits. The larger your S (-> w_exp), the better. 
+2)	w_exp: this is the winning probability of the CHSH game. It is calculated according to w_exp = 0.5+S/8 for the CHSH parameter S, which is found at the end of the previous notebook or in the part after the S of the input file "Measurements_Pair_x_Sy_yy.txt". The S value will depend on the actual hardware you use and even the specific pairs of qubits. The larger your S (-> w_exp), the better. 
 3)	delta_est: is the significance level at which you want your bit string to random. The smaller you make this, the fewer bits you will be able to extract. 
 
 Once you have evaluated the code, you will be presented by the numbers 2*n, m, and rate. These will be used as input to the Trevisan extractor. Now make sure your output-file from the notebook and the seed random number ‘rnd_short_subset1.txt’ are in the libtrevisan folder and run the following command in your terminal:
