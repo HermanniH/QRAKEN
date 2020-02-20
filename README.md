@@ -28,7 +28,7 @@ To generate random numbers with QRAKEN, you first need to open QRAKEN_RunQiskit.
 
 After this, evaluate all the cells in the notebook. 
 
-When your programme has executed, you will find the output as a file called something like "Measurements_Pair_x_Sy_yy.txt". In Pair_x, x indicates from which qubit pair the random numbers were generated. The number after S indicate the measured Bell inequality.
+When your programme has executed, you will find the output in a folder with the name of the dataset. In there is a file called something like "Measurements_Pair_x_Sy_yy.txt". In Pair_x, x indicates from which qubit pair the random numbers were generated. The number after S indicate the measured Bell inequality.
 This is the file you will use as input for the extractor. Before we do that, we also need to calculate the amount of entropy available in the string. This is done using the script Parameters_extractors.py. 
 Here you set your parameters as you like, the explanations for each of them can be found in the supplemental material of [1]. The main parameters in our interest are the following:
 1)	n: This is the number of bits you have generate in the previous step. It can be found after the evaluation of the second cell in the notebook. The larger the n, the larger is m, the number of random bits we can extract from the string. (also m/n is larger).
