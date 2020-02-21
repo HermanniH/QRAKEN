@@ -21,9 +21,9 @@ We recommend installing Anaconda, which provides you with most of the packages. 
 To generate random numbers with QRAKEN, you first need to open QRAKEN_RunQiskit.ipynb. 
 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
-   a)	Local: False: Run on ibm quantum machine, True: run on local simulator.
-   b) machine: Specifiy which quantum computer is used to run 
-   c) howToFindLayout: specify which  method to use to find qubits on machine to generate random numbers. Modes are "greedy", "recursive", "manual"
+   1)	Local: False: Run on ibm quantum machine, True: run on local simulator.
+   2) machine: Specifiy which quantum computer is used to run 
+   3) howToFindLayout: specify which  method to use to find qubits on machine to generate random numbers. Modes are "greedy", "recursive", "manual"
 
 
 After this, evaluate all the cells in the notebook. 
