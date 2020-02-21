@@ -21,10 +21,10 @@ We recommend installing Anaconda, which provides you with most of the packages. 
 To generate random numbers with QRAKEN, you first need to open QRAKEN_RunQiskit.ipynb. 
 1) The first cell imports all required packages
 2) Second cell is where you decide the parameters for the experiment:
-   1)	Local: False: Run on ibm quantum machine, True: run on local simulator.
-   2) coupling_map_pair: If set to []: Script automatically finds best qubit pairs to run measurements on. Else, manually define physical qubit pairs as e.g. coupling_map_pair=[[0,1]] or [[0,1],[3,4]]. 
-   3) machine: Specifiy which quantum computer is used to run 
-   4) mode: For mode, there are two options, default is 0. The experiment can be run with a perfect Bell-state that maximally violates the CHSH inequality.  Mode 0 is explained [here](https://github.com/Qiskit/qiskit-community-tutorials/blob/master/terra/qis_adv/entangled_measurement.ipynb). With mode 1, an alternative gate set creates a Bell state of lower fidelity with less violation and is explained [here](https://decpieibmquantumexperience.blogspot.com/2017/10/chsh-experiment-on-quantum-computer.html)
+   a)	Local: False: Run on ibm quantum machine, True: run on local simulator.
+   b) machine: Specifiy which quantum computer is used to run 
+   c) howToFindLayout: specify which  method to use to find qubits on machine to generate random numbers. Modes are "greedy", "recursive", "manual"
+
 
 After this, evaluate all the cells in the notebook. 
 
