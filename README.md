@@ -24,6 +24,7 @@ To generate random numbers with QRAKEN, you first need to open QRAKEN_RunQiskit.
    1)	Local: False: Run on ibm quantum machine, True: run on local simulator.
    2) machine: Specifiy which quantum computer is used to run 
    3) howToFindLayout: specify which  method to use to find qubits on machine to generate random numbers. Modes are "greedy", "recursive", "manual"
+   4) Further option like restricting number of qubit pairs, boost performance using additional x-gates, etc. Please read the notebook for further details.
 
 
 After this, evaluate all the cells in the notebook. 
